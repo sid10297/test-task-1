@@ -1,10 +1,17 @@
 import React from "react";
 import "./index.css";
 
-const Select = ({ select_name, select_id, option_value, option_label }) => {
+const Select = ({ name, options, onSelect }) => {
+  const selectOption = (event) => {
+    const {name, value} = event.target;
+    onSelect && onSelect({name, value})
+  };
+
   return (
-    <select className='select' name={select_name} id={select_id}>
-      <option value={option_value}>{option_label}</option>
+    <select className='select' name={name} onChange={selectOption}>
+      {options.map((option) => (
+        <option key={`${option.id}`} label={option.name} value={option.id} />
+      ))}
     </select>
   );
 };

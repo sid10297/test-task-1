@@ -3,11 +3,11 @@ import SectionHeaderForm from "../SectionHeaderForm";
 import SectionHeaderInfo from "../SectionHeaderInfo";
 import "./index.css";
 
-const SectionHeader = () => {
+const SectionHeader = ({ getReportData }) => {
   return (
     <div className='section_header_container'>
       <SectionHeaderInfo />
-      <SectionHeaderForm />
+      <SectionHeaderForm getReportData={getReportData} />
     </div>
   );
 };

@@ -7,10 +7,9 @@ import { getProjects } from "../../apis/project";
 import { getGateways } from "../../apis/gateway";
 import { createReport } from "../../apis/report";
 
-const SectionHeaderForm = () => {
+const SectionHeaderForm = ({ getReportData }) => {
   const [projects, setProjects] = useState([]);
   const [gateways, setGateways] = useState([]);
-  const [report, setReport] = useState(null);
   const [showError, setShowError] = useState(false);
   const [reportParams, setReportParams] = useState({
     to: "",
@@ -76,6 +75,7 @@ const SectionHeaderForm = () => {
       const {
         data: { data },
       } = await createReport(reportParams);
+      getReportData(data);
       console.log("Generated report: ", data);
     } else {
       setShowError(true);

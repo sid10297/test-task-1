@@ -1,0 +1,23 @@
+.user_profile {
+  height: 43px;
+  width: 43px;
+  border-radius: 5px;
+  background-color: #f6ca65;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user_initials {
+  color: #ffffff;
+  font-size: 23px;
+  line-height: 27px;
+}
+
+.user_name_wrapper {
+  margin-left: 11px;
+}
+
+.user_name {
+  color: #005b96;
+}

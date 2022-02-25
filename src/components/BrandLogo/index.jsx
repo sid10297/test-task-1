@@ -1,5 +1,5 @@
 import React from "react";
-import brand_logo from "../../assets/images/b-color 1.svg";
+import brand_logo from "../../assets/images/Navbar/b-color 1.svg";
 import "./index.css";
 
 const BrandLogo = () => {

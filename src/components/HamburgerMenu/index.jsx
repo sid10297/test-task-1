@@ -1,5 +1,5 @@
 import React from "react";
-import hamburger_menu from "../../assets/images/Group.svg";
+import hamburger_menu from "../../assets/images/Navbar/Group.svg";
 import "./index.css";
 
 const HamburgerMenu = () => {

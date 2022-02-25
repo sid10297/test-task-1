@@ -1,0 +1,19 @@
+.primary {
+  background: #1bc5bd;
+  border-radius: 5px;
+  border: none;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ffffff;
+  padding: 8px 10px;
+}
+
+.gen_report_btn {
+  background: #005b96;
+  border-radius: 5px;
+  border: none;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ffffff;
+  padding: 8px 10px;
+}

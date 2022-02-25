@@ -1,0 +1,15 @@
+.select {
+  background: #1bc5bd;
+  padding: 8px 37px 8px 12px;
+  border-radius: 5px;
+  border: none;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ffffff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("../../assets/images/SectionHeader/Polygon\ 1.svg");
+  background-repeat: no-repeat;
+  background-position-x: 90%;
+  background-position-y: 50%;
+}

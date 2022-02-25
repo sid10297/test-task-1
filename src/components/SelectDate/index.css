@@ -1,0 +1,13 @@
+.date_picker {
+  background: #1bc5bd;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  width: 118px;
+  font-size: 14px;
+  line-height: 16px;
+  background-image: url("../../assets/images/SectionHeader/Vector.svg");
+  background-repeat: no-repeat;
+  background-position-x: 90%;
+  background-position-y: 50%;
+}

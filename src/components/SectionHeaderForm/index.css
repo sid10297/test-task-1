@@ -1,0 +1,7 @@
+.section_form {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  margin-right: 100px;
+  align-items: center;
+}

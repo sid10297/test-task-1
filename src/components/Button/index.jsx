@@ -1,11 +1,11 @@
 import React from "react";
 import "./index.css";
 
-const Button = ({ variant, label, onClick }) => {
+const Button = ({ variant, label, onClick, type }) => {
   return (
     <button
       onClick={onClick}
-      type='button'
+      type={type}
       className={variant ? variant : "primary"}>
       {label}
     </button>

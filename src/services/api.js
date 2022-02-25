@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiManager = axios.create({
-  baseURL: 'http://178.63.13.157:8090',
+  baseURL: process.env.BASE_URL,
 });
 
 export default apiManager;

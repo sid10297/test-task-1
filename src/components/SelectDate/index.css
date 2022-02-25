@@ -6,7 +6,12 @@
   color: white !important;
 }
 
+.react-datepicker__input-container input:focus-visible {
+  outline: none !important;
+}
+
 .date_picker {
+  flex: 1;
   background: #1bc5bd;
   padding: 8px;
   border-radius: 5px;

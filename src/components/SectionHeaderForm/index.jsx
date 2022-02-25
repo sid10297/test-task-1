@@ -11,6 +11,7 @@ const SectionHeaderForm = () => {
   const [projects, setProjects] = useState([]);
   const [gateways, setGateways] = useState([]);
   const [report, setReport] = useState(null);
+  const [showError, setShowError] = useState(false);
   const [reportParams, setReportParams] = useState({
     to: "",
     from: "",
@@ -22,6 +23,12 @@ const SectionHeaderForm = () => {
     fetchProjects();
     fetchGateways();
   }, []);
+
+  useEffect(() => {
+    if (showError) {
+      setTimeout(() => setShowError(false), 3000);
+    }
+  }, [showError]);
 
   const fetchProjects = async () => {
     const {
@@ -48,28 +55,68 @@ const SectionHeaderForm = () => {
   const onSelect = ({ name, value }) =>
     setReportParams({ ...reportParams, [name]: value });
 
+  const compare = (reportParams) => {
+    const { to, from } = reportParams;
+    if (to > from) {
+      return true;
+    } else if (from > to) {
+      return false;
+    } else {
+      return false;
+    }
+  };
+
   const generateReport = async (e) => {
     e.preventDefault();
-    const {data: {data}} = await createReport(reportParams);
-    console.log('Generated report: ', data);
+    const isDateValid = compare(reportParams);
+    if (reportParams.to.length === 0 || reportParams.from.length === 0) {
+      setShowError(true);
+      return;
+    } else if (isDateValid) {
+      const {
+        data: { data },
+      } = await createReport(reportParams);
+      console.log("Generated report: ", data);
+    } else {
+      setShowError(true);
+    }
   };
 
   return (
-    <form className='section_form' onSubmit={generateReport}>
-      <div className='select_projects m'>
-        <Select name='projectId' options={projects} onSelect={onSelect} />
-      </div>
-      <div className='select_gateways m'>
-        <Select name='gatewayId' options={gateways} onSelect={onSelect} />
-      </div>
-      <div className='select_start_date m'>
-        <SelectDate label='From date' name={'from'} onSelect={onSelect} />
-      </div>
-      <div className='select_end_date m'>
-        <SelectDate label='To date' name='to' onSelect={onSelect} />
-      </div>
-      <Button type='submit' label='Generate report' variant='gen_report_btn' />
-    </form>
+    <div className='form_wrapper'>
+      <form className='section_form' onSubmit={generateReport}>
+        <div className='m'>
+          <Select
+            defaultOption={{ name: "All projects", value: "" }}
+            placeholder='Select project'
+            name='projectId'
+            options={projects}
+            onSelect={onSelect}
+          />
+        </div>
+        <div className='m'>
+          <Select
+            defaultOption={{ name: "All gateways", value: "" }}
+            placeholder='Select gateway'
+            name='gatewayId'
+            options={gateways}
+            onSelect={onSelect}
+          />
+        </div>
+        <div className='m'>
+          <SelectDate label='From date' name={"from"} onSelect={onSelect} />
+        </div>
+        <div className='m'>
+          <SelectDate label='To date' name='to' onSelect={onSelect} />
+        </div>
+        <Button
+          type='submit'
+          label='Generate report'
+          variant='gen_report_btn'
+        />
+      </form>
+      {showError && <p className='error'>Please select valid date fields</p>}
+    </div>
   );
 };
 

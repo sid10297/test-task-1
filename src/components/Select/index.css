@@ -6,10 +6,15 @@
   font-size: 14px;
   line-height: 16px;
   color: #ffffff;
+  flex: 1;
   -webkit-appearance: none;
   -moz-appearance: none;
   background-image: url("../../assets/images/SectionHeader/DownArrow.svg");
   background-repeat: no-repeat;
   background-position-x: 90%;
   background-position-y: 50%;
+}
+
+.select.select:focus {
+  outline: none !important;
 }

@@ -16,6 +16,7 @@ const SelectDate = ({
   const [selectedDate, setSelectedDate] = useState(date ?? null);
 
   const onChange = (date) => {
+    console.log(date);
     setSelectedDate(date);
     const formattedDate = dayjs(date).format("YYYY-MM-DD");
     onSelect && onSelect({ name, value: formattedDate });
@@ -24,14 +25,14 @@ const SelectDate = ({
   return (
     <ReactDatePicker
       className='date_picker'
-      dateFormat={'yyyy-MM-dd'}
+      dateFormat={"yyyy-MM-dd"}
       name={name}
       placeholderText={label}
       minDate={minDate}
       maxDate={maxDate}
       selected={selectedDate}
       onChange={onChange}
-      autoComplete={'off'}
+      autoComplete={"off"}
     />
   );
 };

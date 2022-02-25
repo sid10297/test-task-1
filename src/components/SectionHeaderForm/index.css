@@ -7,3 +7,9 @@
 .m {
   margin-right: 23px;
 }
+
+.error {
+  color: #b00020;
+  margin-top: 5px;
+  position: absolute;
+}

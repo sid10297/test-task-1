@@ -1,4 +1,5 @@
 import AppContainer from "./components/AppContainer";
+import ContentContainer from "./components/ContentContainer";
 import HorizontalBorder from "./components/HorizontalBorder";
 import Navbar from "./components/Navbar/index.jsx";
 import Sidebar from "./components/Sidebar";
@@ -10,7 +11,9 @@ const App = () => {
       <Navbar />
       <HorizontalBorder />
       <Sidebar />
-      <Reports />
+      <ContentContainer>
+        <Reports />
+      </ContentContainer>
     </AppContainer>
   );
 };

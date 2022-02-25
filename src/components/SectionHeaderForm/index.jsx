@@ -7,7 +7,7 @@ import "./index.css";
 const SectionHeaderForm = () => {
   return (
     <form className='section_form'>
-      <div className='select_projects'>
+      <div className='select_projects m'>
         <Select
           select_id='select_projects'
           select_name='select_projects'
@@ -15,7 +15,7 @@ const SectionHeaderForm = () => {
           option_value='all_projects'
         />
       </div>
-      <div className='select_gateways'>
+      <div className='select_gateways m'>
         <Select
           select_id='select_gateways'
           select_name='select_gateways'
@@ -23,10 +23,10 @@ const SectionHeaderForm = () => {
           option_value='gateways'
         />
       </div>
-      <div className='select_start_date'>
+      <div className='select_start_date m'>
         <SelectDate label="From date" />
       </div>
-      <div className='select_end_date'>
+      <div className='select_end_date m'>
         <SelectDate label="To date" />
       </div>
       <Button label='Generate report' variant='gen_report_btn' />

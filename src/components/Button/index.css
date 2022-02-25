@@ -17,3 +17,8 @@
   color: #ffffff;
   padding: 8px 10px;
 }
+
+.gen_report_btn:hover {
+  background: #053657;
+}
+

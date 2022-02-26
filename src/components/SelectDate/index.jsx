@@ -12,13 +12,16 @@ const SelectDate = ({
   date,
   minDate = null,
   maxDate = new Date(),
+  getToMinDate,
 }) => {
   const [selectedDate, setSelectedDate] = useState(date ?? null);
 
   const onChange = (date) => {
-    console.log(date);
     setSelectedDate(date);
     const formattedDate = dayjs(date).format("YYYY-MM-DD");
+    if (label === "For date") {
+      getToMinDate(formattedDate);
+    }
     onSelect && onSelect({ name, value: formattedDate });
   };
 

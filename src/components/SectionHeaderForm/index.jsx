@@ -6,11 +6,13 @@ import "./index.css";
 import { getProjects } from "../../apis/project";
 import { getGateways } from "../../apis/gateway";
 import { createReport } from "../../apis/report";
+import dayjs from "dayjs";
 
 const SectionHeaderForm = ({ getReportData }) => {
   const [projects, setProjects] = useState([]);
   const [gateways, setGateways] = useState([]);
   const [showError, setShowError] = useState(false);
+  const [toMinDate, setToMinDate] = useState(null);
   const [reportParams, setReportParams] = useState({
     to: "",
     from: "",
@@ -51,8 +53,12 @@ const SectionHeaderForm = ({ getReportData }) => {
     setGateways(gatewayOptions);
   };
 
-  const onSelect = ({ name, value }) =>
+  const onSelect = ({ name, value }) => {
+    if (name === "from") {
+      setToMinDate(value);
+    }
     setReportParams({ ...reportParams, [name]: value });
+  };
 
   const compare = (reportParams) => {
     const { to, from } = reportParams;
@@ -76,7 +82,6 @@ const SectionHeaderForm = ({ getReportData }) => {
         data: { data },
       } = await createReport(reportParams);
       getReportData(data);
-      console.log("Generated report: ", data);
     } else {
       setShowError(true);
     }
@@ -104,10 +109,20 @@ const SectionHeaderForm = ({ getReportData }) => {
           />
         </div>
         <div className='m'>
-          <SelectDate label='From date' name={"from"} onSelect={onSelect} />
+          <SelectDate
+            minDate={new Date("01-01-2020")}
+            label='From date'
+            name={"from"}
+            onSelect={onSelect}
+          />
         </div>
         <div className='m'>
-          <SelectDate label='To date' name='to' onSelect={onSelect} />
+          <SelectDate
+            minDate={new Date(toMinDate)}
+            label='To date'
+            name='to'
+            onSelect={onSelect}
+          />
         </div>
         <Button
           type='submit'

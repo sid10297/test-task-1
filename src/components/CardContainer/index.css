@@ -1,0 +1,15 @@
+.card_container {
+  background: #f1fafe;
+  border-radius: 10px;
+  width: 100%;
+  margin-top: 27px;
+  padding-bottom: 17px;
+}
+
+.half {
+  background: #f1fafe;
+  border-radius: 10px;
+  width: 50%;
+  margin-top: 27px;
+  padding-bottom: 17px;
+}

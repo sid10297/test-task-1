@@ -14,3 +14,7 @@ p {
   line-height: 19px;
   letter-spacing: 0em;
 }
+
+body{
+  overflow-x: hidden;
+}

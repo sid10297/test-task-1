@@ -81,7 +81,7 @@ const SectionHeaderForm = ({ getReportData }) => {
       const {
         data: { data },
       } = await createReport(reportParams);
-      getReportData(data);
+      getReportData(data, reportParams);
     } else {
       setShowError(true);
     }

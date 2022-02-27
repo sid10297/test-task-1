@@ -16,6 +16,11 @@
   margin-bottom: 4px;
 }
 
-.no_reports_image{
+.no_reports_image {
   margin-top: 41px;
+}
+
+.report_heading {
+  padding: 18px 0 34px 24px;
+  margin-bottom: 34px;
 }

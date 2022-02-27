@@ -7,14 +7,12 @@
 
 .nav_left_wrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
   margin-left: 35px;
 }
 
 .nav_right_wrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
   margin-right: 100px;
 }

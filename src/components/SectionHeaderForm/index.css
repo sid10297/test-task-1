@@ -1,7 +1,5 @@
 .section_form {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
 }
 
 .m {

@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SectionHeader from "../../components/SectionHeader";
 import "./index.css";
 import NoReports from "../../assets/images/Reports/NoReports.svg";
+import { getProjects } from "../../apis/project";
+import { getGateways } from "../../apis/gateway";
+import ReportDetails from "../../components/ReportDetails";
 
 const NoReportsFound = () => {
   return (
@@ -23,14 +26,60 @@ const NoReportsFound = () => {
 
 const Reports = () => {
   const [report, setReport] = useState(null);
+  const [reportParams, setReportParams] = useState(null);
+  const [project, setProject] = useState(null);
+  const [gateway, setGateway] = useState(null);
+  const [projects, setProjects] = useState(null);
+  const [gateways, setGateways] = useState(null);
 
-  const getReportData = (reportData) => {
+  useEffect(() => {
+    if (reportParams !== null) {
+      getProjectDetails();
+      getGatewayDetails();
+    }
+  }, [reportParams]);
+
+  const getProjectDetails = async () => {
+    const res = await getProjects();
+    res.data.data.map((project) => {
+      if (project.projectId === reportParams.projectId) {
+        setProject(project);
+      } else {
+        setProjects(res.data.data);
+      }
+    });
+  };
+
+  const getGatewayDetails = async () => {
+    const res = await getGateways();
+    res.data.data.map((gateway) => {
+      if (gateway.gatewayId === reportParams.gatewayId) {
+        setGateway(gateway);
+      } else {
+        setGateways(res.data.data);
+      }
+    });
+  };
+
+  const getReportData = (reportData, params) => {
     setReport(reportData);
+    setReportParams(params);
   };
   return (
     <div className='reports_container'>
       <SectionHeader getReportData={getReportData} />
+      {report === null && <NoReportsFound />}
       {report && report.length === 0 && <NoReportsFound />}
+      {report && report.length > 0 && (
+        <ReportDetails
+          reportParams={reportParams}
+          gateway={gateway}
+          project={project}
+          report={report}
+          projects={projects}
+          gateways={gateways}
+        />
+      )}
     </div>
   );
 };

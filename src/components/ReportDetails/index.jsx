@@ -28,12 +28,12 @@ const ReportDetails = ({
       report?.length === 0 ||
       projects === null ||
       projects?.length === 0 ||
-      (reportParams?.projectId.length === 0 &&
-        reportParams?.gatewayId.length === 0) ||
-      (reportParams?.projectId.length > 0 && reportParams?.gatewayId.length > 0)
+      gateways === null ||
+      gateways?.length === 0
     ) {
       return;
     }
+
     if (
       reportParams?.projectId.length === 0 &&
       reportParams?.gatewayId.length > 0
@@ -55,7 +55,7 @@ const ReportDetails = ({
       setChartData(gatewayChartData);
     }
   }, [report, projects, gateway, gateways, project, reportParams]);
-  console.log(reportParams, "params");
+  console.log(chartData, "---chart daata--");
   return (
     <div style={{ display: "flex" }}>
       <div style={{ flex: "1" }}>
@@ -109,15 +109,29 @@ const ReportDetails = ({
           </div>
         </CardContainer>
       </div>
-      <div style={{ flex: "1" }}>
-        {(chartData?.length > 0 &&
-          reportParams?.projectId.length === 0 &&
-          reportParams?.gatewayId.length > 0) ||
-          (reportParams?.projectId.length > 0 &&
-            reportParams?.gatewayId.length === 0 && (
+      {/* {(chartData?.length > 0 &&
+        reportParams?.projectId.length === 0 &&
+        reportParams?.gatewayId.length > 0) ||
+        (reportParams?.projectId.length > 0 &&
+          reportParams?.gatewayId.length === 0 && (
+            <div style={{ flex: "1" }}>
               <Charts chartData={chartData} />
-            ))}
-      </div>
+            </div>
+          ))} */}
+      {chartData?.length > 0 &&
+        reportParams?.projectId.length === 0 &&
+        reportParams?.gatewayId.length > 0 && (
+          <div style={{ flex: "1" }}>
+            <Charts chartData={chartData} />
+          </div>
+        )}
+      {chartData?.length > 0 &&
+        reportParams?.projectId.length > 0 &&
+        reportParams?.gatewayId.length === 0 && (
+          <div style={{ flex: "1" }}>
+            <Charts chartData={chartData} />
+          </div>
+        )}
     </div>
   );
 };

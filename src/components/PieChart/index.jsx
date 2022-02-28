@@ -2,7 +2,7 @@ import React from "react";
 import { PieChart, Pie } from "recharts";
 
 const Charts = ({ chartData }) => {
-  console.log(chartData, "====");
+  console.log(chartData, "=============");
   return (
     <PieChart width={700} height={700}>
       <Pie

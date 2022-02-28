@@ -5,3 +5,60 @@
 .total {
   color: #011f4b;
 }
+
+.report_details_container {
+  display: flex;
+}
+
+.flex {
+  flex: 1;
+}
+
+.center {
+  width: 100%;
+  margin: 0 auto;
+  margin-left: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.name {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #011f4b;
+}
+
+.project_chart_info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart_info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.coloured_sq {
+  height: 15px;
+  width: 15px;
+  border-radius: 5px;
+  background-color: teal;
+  margin-right: 10px;
+}
+
+.card {
+  background: #f1fafe;
+  border-radius: 10px;
+  width: 100%;
+  margin-top: 27px;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+}

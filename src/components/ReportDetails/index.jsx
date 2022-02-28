@@ -57,8 +57,8 @@ const ReportDetails = ({
   }, [report, projects, gateway, gateways, project, reportParams]);
   console.log(chartData, "---chart daata--");
   return (
-    <div style={{ display: "flex" }}>
-      <div style={{ flex: "1" }}>
+    <div className='report_details_container'>
+      <div className='flex'>
         <CardContainer>
           <ReportHeading
             reportParams={reportParams}
@@ -103,33 +103,71 @@ const ReportDetails = ({
               />
             )}
         </CardContainer>
-        <CardContainer>
-          <div className='footer_total_amount'>
-            <p className='total'>Total: {sum.toFixed(2)} USD</p>
-          </div>
-        </CardContainer>
-      </div>
-      {/* {(chartData?.length > 0 &&
-        reportParams?.projectId.length === 0 &&
-        reportParams?.gatewayId.length > 0) ||
-        (reportParams?.projectId.length > 0 &&
+        {reportParams?.projectId.length === 0 &&
           reportParams?.gatewayId.length === 0 && (
-            <div style={{ flex: "1" }}>
-              <Charts chartData={chartData} />
-            </div>
-          ))} */}
+            <CardContainer>
+              <div className='footer_total_amount'>
+                <p className='total'>Total: {sum.toFixed(2)} USD</p>
+              </div>
+            </CardContainer>
+          )}
+
+        {reportParams?.projectId.length > 0 &&
+          reportParams?.gatewayId.length > 0 && (
+            <CardContainer>
+              <div className='footer_total_amount'>
+                <p className='total'>Total: {sum.toFixed(2)} USD</p>
+              </div>
+            </CardContainer>
+          )}
+      </div>
+
       {chartData?.length > 0 &&
         reportParams?.projectId.length === 0 &&
         reportParams?.gatewayId.length > 0 && (
-          <div style={{ flex: "1" }}>
-            <Charts chartData={chartData} />
+          <div className='flex center'>
+            <div className="card">
+                {chartData.map((data) => {
+                  return (
+                    <div className="project_chart_info">
+                      <div className="coloured_sq"></div>
+                      <p className='name'>{data.name}</p>
+                    </div>
+                  );
+                })}
+            </div>
+            <div className='chart'>
+              <Charts chartData={chartData} />
+            </div>
+            <CardContainer>
+              <div className='footer_total_amount'>
+                <p className='total'>Total: {sum.toFixed(2)} USD</p>
+              </div>
+            </CardContainer>
           </div>
         )}
       {chartData?.length > 0 &&
         reportParams?.projectId.length > 0 &&
         reportParams?.gatewayId.length === 0 && (
-          <div style={{ flex: "1" }}>
-            <Charts chartData={chartData} />
+          <div className='flex center'>
+            <div className="card">
+                {chartData.map((data) => {
+                  return (
+                    <div className="project_chart_info">
+                      <div className="coloured_sq"></div>
+                      <p className='name'>{data.name}</p>
+                    </div>
+                  );
+                })}
+            </div>
+            <div className='chart'>
+              <Charts chartData={chartData} />
+            </div>
+            <CardContainer>
+              <div className='footer_total_amount'>
+                <p className='total'>Total: {sum.toFixed(2)} USD</p>
+              </div>
+            </CardContainer>
           </div>
         )}
     </div>

@@ -130,7 +130,7 @@ const SectionHeaderForm = ({ getReportData }) => {
           variant='gen_report_btn'
         />
       </form>
-      {showError && <p className='error'>Please select valid date fields</p>}
+      {showError && <p className='error'>Please check inputs before generating reports</p>}
     </div>
   );
 };

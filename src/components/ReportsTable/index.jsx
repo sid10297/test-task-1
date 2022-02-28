@@ -33,7 +33,9 @@ const ReportsTable = ({
                     )
                   }>
                   <p>{_project.name}</p>
-                  <p>{amountForProject(report, _project.projectId)} USD</p>
+                  <p>
+                    TOTAL: {amountForProject(report, _project.projectId)} USD
+                  </p>
                 </div>
                 <div
                   className={`collapse_body ${selectedProjectId} === ${_project.projectId} ? "show" : "hide"`}>
@@ -87,7 +89,9 @@ const ReportsTable = ({
                     )
                   }>
                   <p>{_project.name}</p>
-                  <p>{amountForProject(report, _project.projectId)} USD</p>
+                  <p>
+                    TOTAL: {amountForProject(report, _project.projectId)} USD
+                  </p>
                 </div>
                 <div
                   className={`collapse_body ${selectedProjectId} === ${_project.projectId} ? "show" : "hide"`}>
@@ -152,7 +156,9 @@ const ReportsTable = ({
                     )
                   }>
                   <p>{_gateway.name}</p>
-                  <p>{amountForGateway(report, _gateway.gatewayId)} USD</p>
+                  <p>
+                    TOTAL: {amountForGateway(report, _gateway.gatewayId)} USD
+                  </p>
                 </div>
 
                 <div

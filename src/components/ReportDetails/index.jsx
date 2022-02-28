@@ -108,7 +108,7 @@ const ReportDetails = ({
           reportParams?.gatewayId.length === 0 && (
             <CardContainer>
               <div className='footer_total_amount'>
-                <p className='total'>Total: {sum.toFixed(2)} USD</p>
+                <p className='total'>TOTAL: {sum.toFixed(2)} USD</p>
               </div>
             </CardContainer>
           )}
@@ -117,7 +117,7 @@ const ReportDetails = ({
           reportParams?.gatewayId.length > 0 && (
             <CardContainer>
               <div className='footer_total_amount'>
-                <p className='total'>Total: {sum.toFixed(2)} USD</p>
+                <p className='total'>TOTAL: {sum.toFixed(2)} USD</p>
               </div>
             </CardContainer>
           )}
@@ -132,7 +132,7 @@ const ReportDetails = ({
             </div>
             <CardContainer>
               <div className='footer_total_amount'>
-                <p className='total'>Total: {sum.toFixed(2)} USD</p>
+                <p className='total'>TOTAL: {sum.toFixed(2)} USD</p>
               </div>
             </CardContainer>
           </div>
@@ -146,7 +146,7 @@ const ReportDetails = ({
             </div>
             <CardContainer>
               <div className='footer_total_amount'>
-                <p className='total'>Total: {sum.toFixed(2)} USD</p>
+                <p className='total'>TOTAL: {sum.toFixed(2)} USD</p>
               </div>
             </CardContainer>
           </div>

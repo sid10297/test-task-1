@@ -55,7 +55,6 @@ const ReportDetails = ({
       setChartData(gatewayChartData);
     }
   }, [report, projects, gateway, gateways, project, reportParams]);
-  console.log(chartData, "---chart daata--");
   return (
     <div className='report_details_container'>
       <div className='flex'>

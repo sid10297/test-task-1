@@ -6,7 +6,6 @@ import "./index.css";
 import { getProjects } from "../../apis/project";
 import { getGateways } from "../../apis/gateway";
 import { createReport } from "../../apis/report";
-import dayjs from "dayjs";
 
 const SectionHeaderForm = ({ getReportData }) => {
   const [projects, setProjects] = useState([]);
@@ -67,7 +66,7 @@ const SectionHeaderForm = ({ getReportData }) => {
     } else if (from > to) {
       return false;
     } else {
-      return false;
+      return true;
     }
   };
 
@@ -130,7 +129,7 @@ const SectionHeaderForm = ({ getReportData }) => {
           variant='gen_report_btn'
         />
       </form>
-      {showError && <p className='error'>Please check inputs before generating reports</p>}
+      {showError && <p className='error'>Date fields are mandatory</p>}
     </div>
   );
 };

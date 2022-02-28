@@ -4,7 +4,6 @@ import "./index.css";
 const Select = ({ name, options, onSelect, placeholder, defaultOption }) => {
   const selectOption = (event) => {
     const { name, value } = event.target;
-    console.log(name, value, "=====");
     onSelect && onSelect({ name, value });
   };
 

@@ -18,9 +18,6 @@ const ReportDetails = ({
 }) => {
   const [chartData, setChartData] = useState(null);
   const reportAmount = report.map((_report) => _report.amount);
-  const sum = reportAmount.reduce(function (acc, val) {
-    return acc + val;
-  }, 0);
 
   useEffect(() => {
     if (
@@ -55,6 +52,15 @@ const ReportDetails = ({
       setChartData(gatewayChartData);
     }
   }, [report, projects, gateway, gateways, project, reportParams]);
+
+  const sum = reportAmount.reduce(function (acc, val) {
+    return acc + val;
+  }, 0);
+
+  const getColors = (colorsArr) => {
+    console.log(colorsArr, "from report details");
+  };
+
   return (
     <div className='report_details_container'>
       <div className='flex'>
@@ -125,18 +131,18 @@ const ReportDetails = ({
         reportParams?.projectId.length === 0 &&
         reportParams?.gatewayId.length > 0 && (
           <div className='flex center'>
-            <div className="card">
-                {chartData.map((data) => {
-                  return (
-                    <div className="project_chart_info">
-                      <div className="coloured_sq"></div>
-                      <p className='name'>{data.name}</p>
-                    </div>
-                  );
-                })}
+            <div className='card'>
+              {chartData.map((data) => {
+                return (
+                  <div className='project_chart_info'>
+                    <div className={`coloured_sq `}></div>
+                    <p className='name'>{data.name}</p>
+                  </div>
+                );
+              })}
             </div>
             <div className='chart'>
-              <Charts chartData={chartData} />
+              <Charts chartData={chartData} getColors={getColors} />
             </div>
             <CardContainer>
               <div className='footer_total_amount'>
@@ -149,15 +155,15 @@ const ReportDetails = ({
         reportParams?.projectId.length > 0 &&
         reportParams?.gatewayId.length === 0 && (
           <div className='flex center'>
-            <div className="card">
-                {chartData.map((data) => {
-                  return (
-                    <div className="project_chart_info">
-                      <div className="coloured_sq"></div>
-                      <p className='name'>{data.name}</p>
-                    </div>
-                  );
-                })}
+            <div className='card'>
+              {chartData.map((data) => {
+                return (
+                  <div className='project_chart_info'>
+                    <div className='coloured_sq'></div>
+                    <p className='name'>{data.name}</p>
+                  </div>
+                );
+              })}
             </div>
             <div className='chart'>
               <Charts chartData={chartData} />

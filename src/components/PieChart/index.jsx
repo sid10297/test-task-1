@@ -3,7 +3,15 @@ import { PieChart, Pie, Cell } from "recharts";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
-const Charts = ({ chartData }) => {
+const Charts = ({ chartData, getColors }) => {
+  // const [color, setColor] = useState(null);
+  // useEffect(() => {
+  //   console.log(color, "from pie");
+  //   // getColors(color);
+  // }, [color, getColors]);
+
+  // console.log(color);
+
   return (
     <PieChart width={600} height={600}>
       <Pie
@@ -15,9 +23,11 @@ const Charts = ({ chartData }) => {
         innerRadius={40}
         outerRadius={120}
         fill='#82ca9d'>
-        {chartData.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-        ))}
+        {chartData.map((entry, index) => {
+          return (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          );
+        })}
       </Pie>
     </PieChart>
   );

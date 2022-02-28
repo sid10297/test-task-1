@@ -51,25 +51,33 @@ const Reports = () => {
   }, [reportParams]);
 
   const getProjectDetails = async () => {
-    const res = await getProjects();
-    res.data.data.map((project) => {
-      if (project.projectId === reportParams.projectId) {
-        setProject(project);
-      } else {
-        setProjects(res.data.data);
-      }
-    });
+    try {
+      const res = await getProjects();
+      res.data.data.map((project) => {
+        if (project.projectId === reportParams.projectId) {
+          return setProject(project);
+        } else {
+          return setProjects(res.data.data);
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getGatewayDetails = async () => {
-    const res = await getGateways();
-    res.data.data.map((gateway) => {
-      if (gateway.gatewayId === reportParams.gatewayId) {
-        setGateway(gateway);
-      } else {
-        setGateways(res.data.data);
-      }
-    });
+    try {
+      const res = await getGateways();
+      res.data.data.map((gateway) => {
+        if (gateway.gatewayId === reportParams.gatewayId) {
+          return setGateway(gateway);
+        } else {
+          return setGateways(res.data.data);
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getReportData = (reportData, params) => {

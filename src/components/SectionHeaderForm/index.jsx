@@ -31,25 +31,33 @@ const SectionHeaderForm = ({ getReportData }) => {
   }, [showError]);
 
   const fetchProjects = async () => {
-    const {
-      data: { data },
-    } = await getProjects();
-    const projectOptions = data.map(({ projectId, name }) => ({
-      id: projectId,
-      name,
-    }));
-    setProjects(projectOptions);
+    try {
+      const {
+        data: { data },
+      } = await getProjects();
+      const projectOptions = data.map(({ projectId, name }) => ({
+        id: projectId,
+        name,
+      }));
+      setProjects(projectOptions);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const fetchGateways = async () => {
-    const {
-      data: { data },
-    } = await getGateways();
-    const gatewayOptions = data.map(({ gatewayId, name }) => ({
-      id: gatewayId,
-      name,
-    }));
-    setGateways(gatewayOptions);
+    try {
+      const {
+        data: { data },
+      } = await getGateways();
+      const gatewayOptions = data.map(({ gatewayId, name }) => ({
+        id: gatewayId,
+        name,
+      }));
+      setGateways(gatewayOptions);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const onSelect = ({ name, value }) => {
@@ -72,17 +80,21 @@ const SectionHeaderForm = ({ getReportData }) => {
 
   const generateReport = async (e) => {
     e.preventDefault();
-    const isDateValid = compare(reportParams);
-    if (reportParams.to.length === 0 || reportParams.from.length === 0) {
-      setShowError(true);
-      return;
-    } else if (isDateValid) {
-      const {
-        data: { data },
-      } = await createReport(reportParams);
-      getReportData(data, reportParams);
-    } else {
-      setShowError(true);
+    try {
+      const isDateValid = compare(reportParams);
+      if (reportParams.to.length === 0 || reportParams.from.length === 0) {
+        setShowError(true);
+        return;
+      } else if (isDateValid) {
+        const {
+          data: { data },
+        } = await createReport(reportParams);
+        getReportData(data, reportParams);
+      } else {
+        setShowError(true);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 

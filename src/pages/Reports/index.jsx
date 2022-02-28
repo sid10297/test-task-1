@@ -5,16 +5,27 @@ import NoReports from "../../assets/images/Reports/NoReports.svg";
 import { getProjects } from "../../apis/project";
 import { getGateways } from "../../apis/gateway";
 import ReportDetails from "../../components/ReportDetails";
+import { FIRST_SCREEN_MESSAGE, NO_REPORTS_FOUND } from "../../Constants";
 
 const NoReportsFound = () => {
   return (
     <div className='no_reports_container'>
       <p className='text_center heading'>No Reports</p>
-      <p className='text_center subtext'>
-        Currently you have no data for the reports to be generated. <br /> Once
-        you start generating traffic through Balance application <br /> the
-        reports will be shown.
-      </p>
+      <p className='text_center subtext'>{NO_REPORTS_FOUND}</p>
+      <img
+        className='no_reports_image'
+        src={NoReports}
+        alt='No reports found'
+      />
+    </div>
+  );
+};
+
+const EmptyForm = () => {
+  return (
+    <div className='no_reports_container'>
+      <p className='text_center heading'>Welcome</p>
+      <p className='text_center subtext'>{FIRST_SCREEN_MESSAGE}</p>
       <img
         className='no_reports_image'
         src={NoReports}
@@ -68,7 +79,7 @@ const Reports = () => {
   return (
     <div className='reports_container'>
       <SectionHeader getReportData={getReportData} />
-      {report === null && <NoReportsFound />}
+      {report === null && <EmptyForm />}
       {report && report.length === 0 && <NoReportsFound />}
       {report && report.length > 0 && (
         <ReportDetails

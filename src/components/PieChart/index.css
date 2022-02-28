@@ -1,0 +1,17 @@
+.recharts-legend-wrapper {
+  background: #f1fafe;
+  border-radius: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 19px 23px;
+  margin: 10px;
+}
+
+.recharts-default-legend li{
+  margin-right: 10px;
+}
+
+.recharts-surface{
+  border-radius: 5px;
+}

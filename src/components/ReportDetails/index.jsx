@@ -127,16 +127,6 @@ const ReportDetails = ({
         reportParams?.projectId.length === 0 &&
         reportParams?.gatewayId.length > 0 && (
           <div className='flex center'>
-            <div className='card'>
-              {chartData.map((data) => {
-                return (
-                  <div className='project_chart_info'>
-                    <div className={`coloured_sq `}></div>
-                    <p className='name'>{data.name}</p>
-                  </div>
-                );
-              })}
-            </div>
             <div className='chart'>
               <Charts chartData={chartData} />
             </div>
@@ -151,16 +141,6 @@ const ReportDetails = ({
         reportParams?.projectId.length > 0 &&
         reportParams?.gatewayId.length === 0 && (
           <div className='flex center'>
-            <div className='card'>
-              {chartData.map((data) => {
-                return (
-                  <div className='project_chart_info'>
-                    <div className='coloured_sq'></div>
-                    <p className='name'>{data.name}</p>
-                  </div>
-                );
-              })}
-            </div>
             <div className='chart'>
               <Charts chartData={chartData} />
             </div>

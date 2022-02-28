@@ -13,7 +13,7 @@ const Charts = ({ chartData, getColors }) => {
   // console.log(color);
 
   return (
-    <PieChart width={600} height={600}>
+    <PieChart width={600} height={400}>
       <Pie
         data={chartData}
         dataKey='value'

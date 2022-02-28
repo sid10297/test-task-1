@@ -24,6 +24,7 @@ const Charts = ({ chartData, getColors }) => {
         outerRadius={120}
         fill='#82ca9d'>
         {chartData.map((entry, index) => {
+          //Color
           return (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           );

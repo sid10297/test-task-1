@@ -57,10 +57,6 @@ const ReportDetails = ({
     return acc + val;
   }, 0);
 
-  // const getColors = (colorsArr) => {
-  //   console.log(colorsArr, "from report details");
-  // };
-
   return (
     <div className='report_details_container'>
       <div className='flex'>
@@ -142,10 +138,7 @@ const ReportDetails = ({
               })}
             </div>
             <div className='chart'>
-              <Charts
-                chartData={chartData}
-                //  getColors={getColors}
-              />
+              <Charts chartData={chartData} />
             </div>
             <CardContainer>
               <div className='footer_total_amount'>
@@ -169,10 +162,7 @@ const ReportDetails = ({
               })}
             </div>
             <div className='chart'>
-              <Charts
-                chartData={chartData}
-                //  getColors={getColors}
-              />
+              <Charts chartData={chartData} />
             </div>
             <CardContainer>
               <div className='footer_total_amount'>

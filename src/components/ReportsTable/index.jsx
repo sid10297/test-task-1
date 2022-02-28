@@ -1,37 +1,18 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { amountForGateway, amountForProject } from "../../common/utility";
 import CardContainer from "../CardContainer";
 import "./index.css";
 
-const ReportsTable = ({ report, projects, gateways, gateway, project }) => {
+const ReportsTable = ({
+  report,
+  projects,
+  gateways,
+  gateway,
+  project,
+  setChartData,
+}) => {
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [selectedGatewayId, setSelectedGatewayId] = useState(null);
-  // const [amount, setAmount] = useState(null);
-  console.log(report);
-  console.log(projects);
-  console.log(gateways);
-  // _project.projectId === _report.projectId
-
-  const amountForProject = (pId) => {
-    const filteredProjects = report.filter(
-      (_report) => _report.projectId === pId
-    );
-    const totalAmountForFilteredProjects = filteredProjects.reduce(
-      (result, proj) => result + proj.amount,
-      0
-    );
-    return totalAmountForFilteredProjects.toFixed(2);
-  };
-
-  const amountForGateway = (gId) => {
-    const filteredGateways = report.filter(
-      (_report) => _report.gatewayId === gId
-    );
-    const totalAmountForFilteredGateways = filteredGateways.reduce(
-      (result, proj) => result + proj.amount,
-      0
-    );
-    return totalAmountForFilteredGateways.toFixed(2);
-  };
 
   return (
     <CardContainer>
@@ -52,7 +33,7 @@ const ReportsTable = ({ report, projects, gateways, gateway, project }) => {
                     )
                   }>
                   <p>{_project.name}</p>
-                  <p>{amountForProject(_project.projectId)} USD</p>
+                  <p>{amountForProject(report, _project.projectId)} USD</p>
                 </div>
                 <div
                   className={`collapse_body ${selectedProjectId} === ${_project.projectId} ? "show" : "hide"`}>
@@ -106,9 +87,8 @@ const ReportsTable = ({ report, projects, gateways, gateway, project }) => {
                     )
                   }>
                   <p>{_project.name}</p>
-                  <p>{amountForProject(_project.projectId)} USD</p>
+                  <p>{amountForProject(report, _project.projectId)} USD</p>
                 </div>
-
                 <div
                   className={`collapse_body ${selectedProjectId} === ${_project.projectId} ? "show" : "hide"`}>
                   {selectedProjectId === _project.projectId && (
@@ -172,7 +152,7 @@ const ReportsTable = ({ report, projects, gateways, gateway, project }) => {
                     )
                   }>
                   <p>{_gateway.name}</p>
-                  <p>{amountForGateway(_gateway.gatewayId)} USD</p>
+                  <p>{amountForGateway(report, _gateway.gatewayId)} USD</p>
                 </div>
 
                 <div
